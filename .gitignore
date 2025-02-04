@@ -1,0 +1,44 @@
+# Dotnet Build Artifacts
+bin/
+obj/
+
+# User-Specific Files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+logs/
+
+# Environment and Config Files
+appsettings.*.json
+secrets.json
+
+# .NET Core Specific
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET Specific
+wwwroot/node_modules/
+wwwroot/lib/
+
+# Entity Framework Migrations
+Migrations/
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+*.sln.iml
+
+# Docker
+docker-compose.override.yml
+
+# OS-Specific
+.DS_Store
+Thumbs.db
+HotelBooking
