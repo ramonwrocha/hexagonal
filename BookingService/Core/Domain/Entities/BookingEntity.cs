@@ -5,17 +5,15 @@ namespace Domain.Entities;
 
 public class BookingEntity : EntityBase
 {
-    public RoomEntity Room { get; set; }
-
-    public int GuestId { get; set; }
-
-    public GuestEntity Guest { get; set; }
-
     public DateTime CheckIn { get; set; }
 
     public DateTime CheckOut { get; set; }
     
     public decimal TotalPrice { get; set; }
+
+    public RoomEntity Room { get; set; }
+
+    public GuestEntity Guest { get; set; }
 
     private BookingStatus Status { get; set; }
 

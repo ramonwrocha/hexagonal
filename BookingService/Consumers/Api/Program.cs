@@ -1,4 +1,8 @@
+using Application.Guest;
+using Application.Guest.Ports;
 using Data.DataAccess;
+using Data.Guest;
+using Domain.Ports;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +19,8 @@ builder.Services.AddDbContext<HotelBookingDbContext>(dbContextOptions =>
 });
 #endregion
 
+builder.Services.AddScoped<IGuestService, GuestService>();
+builder.Services.AddScoped<IGuestRepository, GuestRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

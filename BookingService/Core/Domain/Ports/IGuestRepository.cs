@@ -6,5 +6,5 @@ public interface IGuestRepository
 {
     Task<GuestEntity> Get(int id);
 
-    Task<int> Save(GuestEntity guest);
+    Task<int> Create(GuestEntity guest);
 }
