@@ -10,7 +10,7 @@ public sealed class GuestEntity : EntityBase
 
     public string Surname { get; set; }
 
-    public string Email { get; set; }
+    public Email Email { get; set; }
 
     public GuestType Type { get; set; }
 

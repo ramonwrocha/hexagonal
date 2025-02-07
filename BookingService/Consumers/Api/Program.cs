@@ -1,26 +1,11 @@
-using Application.Guest;
-using Application.Guest.Ports;
-using Data.DataAccess;
-using Data.Guest;
-using Domain.Ports;
-using Microsoft.EntityFrameworkCore;
+using Api.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
+var configuration = builder.Configuration;
 
 builder.Services.AddControllers();
 
-#region DB PostGres TODO:Create IoC
-var connectionStringPostgres = builder.Configuration.GetValue<string>("ConnectionString:PostgresConnection");
-builder.Services.AddDbContext<HotelBookingDbContext>(dbContextOptions =>
-{
-    dbContextOptions.UseNpgsql(connectionStringPostgres);
-});
-#endregion
-
-builder.Services.AddScoped<IGuestService, GuestService>();
-builder.Services.AddScoped<IGuestRepository, GuestRepository>();
+builder.Services.RegisterIoCContainer(configuration);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

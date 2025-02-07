@@ -1,4 +1,4 @@
-﻿using Application.Guest.Models.Mappings;
+﻿using Application.Guest.Mappings;
 using Application.Guest.Models.Requests;
 using Application.Guest.Models.Responses;
 using Application.Guest.Ports;

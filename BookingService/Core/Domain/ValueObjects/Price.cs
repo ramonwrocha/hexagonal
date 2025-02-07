@@ -2,7 +2,7 @@
 
 namespace Domain.ValueObjects;
 
-public class Price
+public sealed class Price
 {
     public decimal Amount { get; set; }
 
