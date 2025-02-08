@@ -1,45 +1,33 @@
-﻿using Application.Guest.Models.DTOs;
+﻿using Application.Booking.Models.DTOs;
 using Domain.Entities;
-using Domain.Enums;
-using Domain.ValueObjects;
 
-namespace Application.Guest.Mappings;
+namespace Application.Booking.Mappings;
 
-public static class GuestMapper
-{
-    public static GuestDto Map(GuestEntity entity)
+public static class BookingMapper
+{ 
+    public static BookingDto Map(BookingEntity entity)
     {
-        return new GuestDto()
+        return new BookingDto()
         {
             Id = entity.Id,
-            Name = entity.Name,
-            Surname = entity.Surname,
-            Email = entity.Email.Value,
-            Type = entity.Type.ToString(),
-            DocumentNumber = entity.Document.Number,
-            DocumentType = entity.Document.Type.ToString()
+            CheckIn = entity.CheckIn,
+            CheckOut = entity.CheckOut,
+            TotalPrice = entity.TotalPrice,
+            RoomName = entity.Room.Name,
+            GuestDocuments = entity.Guests.Select(x => x.Document.Number).ToList()
         };
     }
 
-    public static GuestEntity Map(GuestDto dto)
+    public static BookingEntity Map(BookingDto dto, RoomEntity room, ICollection<GuestEntity> guests)
     {
-        return new GuestEntity()
+        return new BookingEntity()
         {
             Id = dto.Id,
-            Name = dto.Name,
-            Surname = dto.Surname,
-            Email = new Email(dto.Email),
-            Type = Enum.TryParse<GuestType>(dto.Type, out var guestType) ? guestType : GuestType.Adult,
-            Document = new DocumentNumber
-            {
-                Number = dto.DocumentNumber,
-                Type = ParseDocumentType(dto.DocumentType)
-            }
+            CheckIn = dto.CheckIn,
+            CheckOut = dto.CheckOut,
+            TotalPrice = dto.TotalPrice,
+            Room = room,
+            Guests = guests
         };
-    }
-
-    private static DocumentType ParseDocumentType(string documentType)
-    {
-        return Enum.TryParse<DocumentType>(documentType, out var result) ? result : DocumentType.IDCard;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Application.Guest.Models.DTOs;
 
-public class GuestDto
+public sealed class GuestDto
 {
     public int Id { get; set; }
 

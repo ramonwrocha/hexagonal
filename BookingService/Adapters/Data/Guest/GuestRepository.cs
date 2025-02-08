@@ -1,6 +1,7 @@
 ﻿using Data.DataAccess;
 using Domain.Entities;
 using Domain.Ports;
+using Microsoft.EntityFrameworkCore;
 
 namespace Data.Guest;
 
@@ -17,5 +18,13 @@ public class GuestRepository(HotelBookingDbContext context) : IGuestRepository
         var result = await context.Guests.AddAsync(guest);
         await context.SaveChangesAsync();
         return result.Entity.Id;
+    }
+
+    public async Task<GuestEntity> GetByDocument(string documentNumber)
+    {
+        var result = await context.Guests
+            .FirstOrDefaultAsync(g => g.Document.Number.ToUpper().Equals(documentNumber.ToUpper()));
+
+        return result;
     }
 }

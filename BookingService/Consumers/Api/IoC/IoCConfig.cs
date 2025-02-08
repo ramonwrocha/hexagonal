@@ -1,8 +1,12 @@
-﻿using Application.Guest;
+﻿using Application.Booking;
+using Application.Booking.Ports;
+using Application.Booking.Validators;
+using Application.Guest;
 using Application.Guest.Ports;
 using Application.Guest.Validators;
 using Application.Room;
 using Application.Room.Ports;
+using Data.Booking;
 using Data.DataAccess;
 using Data.Guest;
 using Data.Room;
@@ -27,6 +31,7 @@ public static class IoCConfig
     private static void RegisterValidators(IServiceCollection serviceCollection)
     {
         serviceCollection.AddValidatorsFromAssemblyContaining<CreateGuestValidator>();
+        serviceCollection.AddValidatorsFromAssemblyContaining<CreateBookingValidator>();
     }
 
     private static void RegisterData(IServiceCollection serviceCollection, IConfiguration configuration)
@@ -40,15 +45,15 @@ public static class IoCConfig
 
     private static void RegisterRepositories(IServiceCollection serviceCollection)
     {
-        serviceCollection.AddScoped<IGuestRepository, GuestRepository>();
         serviceCollection.AddScoped<IRoomRepository, RoomRepository>();
-
+        serviceCollection.AddScoped<IGuestRepository, GuestRepository>();
+        serviceCollection.AddScoped<IBookingRepository, BookingRepository>();
     }
 
     private static void RegisteredServices(IServiceCollection serviceCollection)
     {
-        serviceCollection.AddScoped<IGuestService, GuestService>();
         serviceCollection.AddScoped<IRoomService, RoomService>();
-
+        serviceCollection.AddScoped<IGuestService, GuestService>();
+        serviceCollection.AddScoped<IBookingService, BookingService>();
     }
 }

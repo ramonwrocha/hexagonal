@@ -13,14 +13,14 @@ public class StateMachineTests
     [Test]
     public void BookingStatus_ShouldBePendingInitially()
     {
-        var booking = new BookingEntity();  // Pending
+        var booking = BuildBookingEntity();  // Pending
         Assert.AreEqual(expected: BookingStatus.Pending, actual: booking.GetStatus);
     }
 
     [Test]
     public void ChangeBookingStatus_ShouldSetStatusFromPendingToConfirmed_WhenPayActionIsPerformed()
     {
-        var booking = new BookingEntity();
+        var booking = BuildBookingEntity();
         booking.ChangeBookingStatus(BookingAction.Pay); // Confirmed
 
         Assert.AreEqual(expected: BookingStatus.Confirmed, actual: booking.GetStatus);
@@ -29,7 +29,7 @@ public class StateMachineTests
     [Test]
     public void ChangeBookingStatus_ShouldSetStatusFromPendingToCancelled_WhenCancelActionIsPerformed()
     {
-        var booking = new BookingEntity();
+        var booking = BuildBookingEntity();
         booking.ChangeBookingStatus(BookingAction.Cancel); // Cancelled
 
         Assert.AreEqual(expected: BookingStatus.Cancelled, actual: booking.GetStatus);
@@ -38,7 +38,7 @@ public class StateMachineTests
     [Test]
     public void ChangeBookingStatus_ShouldSetStatusFromCancelledToPending_WhenReopenActionIsPerformed()
     {
-        var booking = new BookingEntity();
+        var booking = BuildBookingEntity();
         booking.ChangeBookingStatus(BookingAction.Cancel); // Cancelled  
         booking.ChangeBookingStatus(BookingAction.Reopen); // Pending
 
@@ -48,7 +48,7 @@ public class StateMachineTests
     [Test]
     public void ChangeBookingStatus_ShouldSetStatusFromConfirmedToCancelled_WhenRefundActionIsPerformed()
     {
-        var booking = new BookingEntity();
+        var booking = BuildBookingEntity();
         booking.ChangeBookingStatus(BookingAction.Pay); // Confirmed
         booking.ChangeBookingStatus(BookingAction.Refund); // Cancelled
 
@@ -60,7 +60,7 @@ public class StateMachineTests
     [TestCase(BookingAction.Refund)]
     public void ChangeBookingStatus_ShouldThrowInvalidOperationException_WhenInvalidActionIsPerformedInPendingState(BookingAction action)
     {
-        var booking = new BookingEntity(); // Pending
+        var booking = BuildBookingEntity(); // Pending
 
         Assert.Throws<InvalidOperationException>(() => booking.ChangeBookingStatus(action));
     }
@@ -71,7 +71,7 @@ public class StateMachineTests
     [TestCase(BookingAction.Reopen)]
     public void ChangeBookingStatus_ShouldThrowInvalidOperationException_WhenInvalidActionIsPerformedInConfirmedState(BookingAction action)
     {
-        var booking = new BookingEntity();
+        var booking = BuildBookingEntity();
 
         booking.ChangeBookingStatus(BookingAction.Pay); // Confirmed
 
@@ -83,12 +83,21 @@ public class StateMachineTests
     [TestCase(BookingAction.Reopen)]
     public void ChangeBookingStatus_ShouldThrowInvalidOperationException_WhenInvalidActionIsPerformedInPendingStateAfterReopen(BookingAction action)
     {
-        var booking = new BookingEntity();
+        var booking = BuildBookingEntity();
 
         booking.ChangeBookingStatus(BookingAction.Cancel); // Cancelled
          
         booking.ChangeBookingStatus(BookingAction.Reopen); // Pending
 
         Assert.Throws<InvalidOperationException>(() => booking.ChangeBookingStatus(action));
+    }
+
+    private BookingEntity BuildBookingEntity()
+    {
+        return new BookingEntity
+        {
+            Room = new RoomEntity(),
+            Guests = [],
+        };
     }
 }

@@ -1,18 +1,16 @@
-﻿namespace Application.Guest.Models.DTOs;
+﻿namespace Application.Booking.Models.DTOs;
 
-public class GuestDto
+public sealed class BookingDto
 {
     public int Id { get; set; }
 
-    public string Name { get; set; }
+    public DateTime CheckIn { get; set; }
 
-    public string Surname { get; set; }
+    public DateTime CheckOut { get; set; }
 
-    public string Email { get; set; }
+    public decimal TotalPrice { get; set; }
 
-    public string Type { get; set; }
+    public string RoomName{ get; set; }
 
-    public string DocumentNumber { get; set; }
-
-    public string DocumentType { get; set; }
+    public ICollection<string> GuestDocuments { get; set; } = new List<string>();
 }

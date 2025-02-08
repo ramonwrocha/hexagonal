@@ -1,9 +1,9 @@
-﻿using Application.Guest.Models.Requests;
-using Application.Guest.Models.Responses;
+﻿using Application.Booking.Models.Requests;
+using Application.Booking.Models.Responses;
 
-namespace Application.Guest.Ports;
+namespace Application.Booking.Ports;
 
-public interface IGuestService
+public interface IBookingService
 {
-    Task<GuestResponse> CreateGuestAsync(CreateGuestRequest request);
+    Task<BookingResponse> CreateBookingAsync(CreateBookingRequest request);
 }

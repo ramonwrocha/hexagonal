@@ -1,8 +1,8 @@
 ﻿using Application.Base;
-using Application.Guest.Models.DTOs;
+using Application.Booking.Models.DTOs;
 
-namespace Application.Guest.Models.Responses;
+namespace Application.Booking.Models.Responses;
 
-public sealed class GuestResponse : ResponseBase<GuestDto>
+public sealed class BookingResponse : ResponseBase<BookingDto>
 {
 }

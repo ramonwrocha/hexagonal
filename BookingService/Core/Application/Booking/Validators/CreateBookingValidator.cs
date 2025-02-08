@@ -1,15 +1,24 @@
-﻿using Application.Guest.Models.Requests;
+﻿using Application.Booking.Models.DTOs;
+using Application.Booking.Models.Requests;
 using FluentValidation;
 
-namespace Application.Guest.Validators;
+namespace Application.Booking.Validators;
 
-public class CreateGuestValidator : AbstractValidator<CreateGuestRequest>
+public class CreateBookingValidator : AbstractValidator<CreateBookingRequest>
 {
-    public CreateGuestValidator()
+    public CreateBookingValidator()
     {
-        RuleFor(x => x.Data.Email).NotNull().NotEmpty();
-        RuleFor(x => x.Data.Name).NotNull().NotEmpty();
-        RuleFor(x => x.Data.Surname).NotNull().NotEmpty();
-        RuleFor(x => x.Data.DocumentNumber).NotNull().NotEmpty();
+        RuleFor(x => x.Data.RoomName).NotNull().NotEmpty();
+
+        RuleFor(x => x.Data.GuestDocuments).NotNull().NotEmpty();
+
+        RuleFor(x => x.Data.GuestDocuments).Must(x => x.Count > 0);
+
+        RuleFor(x => x.Data.GuestDocuments).Must(x => x.Count <= 4);
+
+        RuleFor(x => x.Data.CheckIn)
+            .NotNull()
+            .NotEmpty()
+            .LessThan(x => x.Data.CheckOut);
     }
 }

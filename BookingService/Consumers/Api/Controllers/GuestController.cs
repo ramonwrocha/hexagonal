@@ -12,6 +12,7 @@ public class GuestController(IGuestService guestService) : ControllerBase
     public async Task<IActionResult> CreateGuestAsync([FromBody] CreateGuestRequest request)
     {
         var response = await guestService.CreateGuestAsync(request);
+
         if (response.Success)
         {
             return Ok(response);

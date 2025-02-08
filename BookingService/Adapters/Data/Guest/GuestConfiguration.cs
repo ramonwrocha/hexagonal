@@ -26,9 +26,16 @@ public class GuestConfiguration : IEntityTypeConfiguration<GuestEntity>
         builder.OwnsOne(x => x.Document)
             .Property(x => x.Type);
 
-        builder.OwnsOne(x => x.Email)
-            .Property(x => x.Value)
-            .IsRequired()
-            .HasMaxLength(50);
+        builder.OwnsOne(x => x.Email, email =>
+        {
+            email.Property(x => x.Value)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            email.HasIndex(e => e.Value)
+                .IsUnique();
+        });
+
+
     }
 }
