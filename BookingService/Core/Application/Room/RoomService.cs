@@ -1,4 +1,4 @@
-﻿using Application.Room.Models.Mappings;
+﻿using Application.Room.Mappings;
 using Application.Room.Models.Requests;
 using Application.Room.Models.Responses;
 using Application.Room.Ports;

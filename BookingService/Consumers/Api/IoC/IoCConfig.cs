@@ -1,8 +1,11 @@
 ﻿using Application.Guest;
 using Application.Guest.Ports;
 using Application.Guest.Validators;
+using Application.Room;
+using Application.Room.Ports;
 using Data.DataAccess;
 using Data.Guest;
+using Data.Room;
 using Domain.Ports;
 using Microsoft.EntityFrameworkCore;
 using FluentValidation;
@@ -38,10 +41,14 @@ public static class IoCConfig
     private static void RegisterRepositories(IServiceCollection serviceCollection)
     {
         serviceCollection.AddScoped<IGuestRepository, GuestRepository>();
+        serviceCollection.AddScoped<IRoomRepository, RoomRepository>();
+
     }
 
     private static void RegisteredServices(IServiceCollection serviceCollection)
     {
         serviceCollection.AddScoped<IGuestService, GuestService>();
+        serviceCollection.AddScoped<IRoomService, RoomService>();
+
     }
 }

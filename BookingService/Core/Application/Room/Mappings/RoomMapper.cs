@@ -1,9 +1,8 @@
 ﻿using Application.Room.Models.DTOs;
 using Domain.Entities;
-using Domain.Enums;
 using Domain.ValueObjects;
 
-namespace Application.Room.Models.Mappings;
+namespace Application.Room.Mappings;
 
 public static class RoomMapper
 {

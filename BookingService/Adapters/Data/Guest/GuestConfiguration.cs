@@ -16,9 +16,6 @@ public class GuestConfiguration : IEntityTypeConfiguration<GuestEntity>
         builder.Property(g => g.Surname)
             .IsRequired()
             .HasMaxLength(50);
-        builder.Property(g => g.Email)
-            .IsRequired()
-            .HasMaxLength(50);
         builder.Property(g => g.Type)
             .IsRequired()
             .HasConversion<string>();
@@ -28,5 +25,10 @@ public class GuestConfiguration : IEntityTypeConfiguration<GuestEntity>
 
         builder.OwnsOne(x => x.Document)
             .Property(x => x.Type);
+
+        builder.OwnsOne(x => x.Email)
+            .Property(x => x.Value)
+            .IsRequired()
+            .HasMaxLength(50);
     }
 }
