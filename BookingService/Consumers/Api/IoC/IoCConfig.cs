@@ -1,18 +1,16 @@
-﻿using Application.Booking;
-using Application.Booking.Ports;
+﻿using Application.Booking.Ports;
 using Application.Booking.Validators;
-using Application.Guest;
 using Application.Guest.Ports;
 using Application.Guest.Validators;
 using Application.Room;
 using Application.Room.Ports;
-using Data.Booking;
 using Data.DataAccess;
-using Data.Guest;
-using Data.Room;
 using Domain.Ports;
 using Microsoft.EntityFrameworkCore;
 using FluentValidation;
+using Application.Booking.Adapters;
+using Application.Guest.Adapters;
+using Data.Persistence;
 
 namespace Api.IoC;
 

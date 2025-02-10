@@ -1,10 +1,9 @@
-﻿using Application.Guest;
-using Application.Guest.Models.DTOs;
+﻿using Application.Guest.Adapters;
 using Application.Guest.Models.Requests;
 using Domain.Entities;
-using Domain.Enums;
+using Domain.Entities.Enums;
+using Domain.Entities.ValueObjects;
 using Domain.Ports;
-using Domain.ValueObjects;
 using FluentAssertions;
 using Moq;
 

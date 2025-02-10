@@ -1,5 +1,5 @@
 ﻿using Application.Base;
-using Application.Room.Models.DTOs;
+using Application.Room.Models.Dtos;
 
 namespace Application.Room.Models.Requests;
 

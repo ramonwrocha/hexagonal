@@ -1,5 +1,4 @@
-﻿using Application.Booking.Models.DTOs;
-using Application.Booking.Models.Requests;
+﻿using Application.Booking.Models.Requests;
 using FluentValidation;
 
 namespace Application.Booking.Validators;

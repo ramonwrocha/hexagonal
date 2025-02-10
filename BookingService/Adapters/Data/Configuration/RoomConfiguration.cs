@@ -24,6 +24,5 @@ public class RoomConfiguration : IEntityTypeConfiguration<RoomEntity>
 
         builder.OwnsOne(x => x.Price)
             .Property(x => x.Amount);
-
     }
 }

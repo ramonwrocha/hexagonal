@@ -1,4 +1,4 @@
-﻿namespace Application.Booking.Models.DTOs;
+﻿namespace Application.Booking.Models.Dtos;
 
 public sealed class BookingDto
 {

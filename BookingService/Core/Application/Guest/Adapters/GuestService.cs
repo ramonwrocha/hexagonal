@@ -4,7 +4,7 @@ using Application.Guest.Models.Responses;
 using Application.Guest.Ports;
 using Domain.Ports;
 
-namespace Application.Guest;
+namespace Application.Guest.Adapters;
 
 public class GuestService(IGuestRepository guestRepository) : IGuestService
 {

@@ -5,8 +5,9 @@ using Application.Booking.Ports;
 using Domain.Entities;
 using Domain.Ports;
 using Application.Booking.Validators;
+using Application.Booking.Builders;
 
-namespace Application.Booking;
+namespace Application.Booking.Adapters;
 
 public class BookingService(IBookingRepository bookingRepository, IGuestRepository guestRepository, IRoomRepository roomRepository) : IBookingService
 {
@@ -15,14 +16,14 @@ public class BookingService(IBookingRepository bookingRepository, IGuestReposito
         try
         {
             await CreateBookingRequestValidate(request);
-            
+
             var room = await GetRoomAsync(request.Data.RoomName);
 
             var guests = await GetGuestAsync(request.Data.GuestDocuments);
-            
-            var booking = BookingMapper.Map(request.Data, room, guests);
 
-            booking.TotalPrice = CalculateTotalPrice(booking, room);
+            var booking = new BookingBuilder(BookingMapper.Map(request.Data))
+                .WithBookingGuests(guests)
+                .Build(room);
 
             var id = await bookingRepository.Create(booking);
 
@@ -74,12 +75,5 @@ public class BookingService(IBookingRepository bookingRepository, IGuestReposito
         }
 
         return room;
-    }
-    
-    private static decimal CalculateTotalPrice(BookingEntity booking, RoomEntity room)
-    {
-        var totalPriceDays = room.Price.Amount * (booking.CheckOut - booking.CheckIn).Days;
-        totalPriceDays *= booking.Guests.Count;
-        return totalPriceDays;
     }
 }

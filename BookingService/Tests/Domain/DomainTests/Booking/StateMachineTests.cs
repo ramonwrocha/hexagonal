@@ -1,5 +1,5 @@
 ﻿using Domain.Entities;
-using Domain.Enums;
+using Domain.Entities.Enums;
 
 namespace DomainTests.Booking;
 
@@ -97,7 +97,7 @@ public class StateMachineTests
         return new BookingEntity
         {
             Room = new RoomEntity(),
-            Guests = [],
+            BookingGuests = [],
         };
     }
 }

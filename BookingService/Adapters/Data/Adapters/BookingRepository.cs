@@ -3,7 +3,7 @@ using Domain.Entities;
 using Domain.Ports;
 using Microsoft.EntityFrameworkCore;
 
-namespace Data.Booking;
+namespace Data.Persistence;
 
 public class BookingRepository(HotelBookingDbContext context) : IBookingRepository
 {

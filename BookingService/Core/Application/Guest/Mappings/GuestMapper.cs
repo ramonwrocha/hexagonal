@@ -1,7 +1,7 @@
-﻿using Application.Guest.Models.DTOs;
+﻿using Application.Guest.Models.Dtos;
 using Domain.Entities;
-using Domain.Enums;
-using Domain.ValueObjects;
+using Domain.Entities.Enums;
+using Domain.Entities.ValueObjects;
 
 namespace Application.Guest.Mappings;
 

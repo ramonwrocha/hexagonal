@@ -1,5 +1,5 @@
 ﻿using Application.Base;
-using Application.Booking.Models.DTOs;
+using Application.Booking.Models.Dtos;
 
 namespace Application.Booking.Models.Responses;
 

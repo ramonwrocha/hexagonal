@@ -1,6 +1,6 @@
-﻿using Domain.Enums;
+﻿using Domain.Entities.Enums;
 
-namespace Domain.ValueObjects;
+namespace Domain.Entities.ValueObjects;
 
 public sealed class DocumentNumber
 {

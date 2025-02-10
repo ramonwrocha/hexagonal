@@ -1,6 +1,6 @@
 ﻿using Domain.Entities.Base;
-using Domain.Enums;
-using Domain.ValueObjects;
+using Domain.Entities.Enums;
+using Domain.Entities.ValueObjects;
 
 namespace Domain.Entities;
 

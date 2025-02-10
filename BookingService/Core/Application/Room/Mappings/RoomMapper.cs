@@ -1,6 +1,6 @@
-﻿using Application.Room.Models.DTOs;
+﻿using Application.Room.Models.Dtos;
 using Domain.Entities;
-using Domain.ValueObjects;
+using Domain.Entities.ValueObjects;
 
 namespace Application.Room.Mappings;
 

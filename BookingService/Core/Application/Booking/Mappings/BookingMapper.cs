@@ -1,4 +1,4 @@
-﻿using Application.Booking.Models.DTOs;
+﻿using Application.Booking.Models.Dtos;
 using Domain.Entities;
 
 namespace Application.Booking.Mappings;
@@ -14,11 +14,11 @@ public static class BookingMapper
             CheckOut = entity.CheckOut,
             TotalPrice = entity.TotalPrice,
             RoomName = entity.Room.Name,
-            GuestDocuments = entity.Guests.Select(x => x.Document.Number).ToList()
+            GuestDocuments = entity.BookingGuests.Select(x => x.Guest.Document.Number).ToList()
         };
     }
 
-    public static BookingEntity Map(BookingDto dto, RoomEntity room, ICollection<GuestEntity> guests)
+    public static BookingEntity Map(BookingDto dto)
     {
         return new BookingEntity()
         {
@@ -26,8 +26,8 @@ public static class BookingMapper
             CheckIn = dto.CheckIn,
             CheckOut = dto.CheckOut,
             TotalPrice = dto.TotalPrice,
-            Room = room,
-            Guests = guests
+            Room = null,
+            BookingGuests = new HashSet<BookingGuestEntity>()
         };
     }
 }

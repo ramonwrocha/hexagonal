@@ -1,5 +1,5 @@
 ﻿using Application.Base;
-using Application.Guest.Models.DTOs;
+using Application.Guest.Models.Dtos;
 
 namespace Application.Guest.Models.Requests;
 

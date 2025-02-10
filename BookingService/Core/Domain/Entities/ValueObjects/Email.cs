@@ -1,13 +1,13 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Domain.ValueObjects;
+namespace Domain.Entities.ValueObjects;
 
 public class Email
 {
     public string Value { get; }
 
     private readonly Regex _emailRegex = new(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.Compiled);
-    
+
     public Email(string value)
     {
         if (!IsValid(value))

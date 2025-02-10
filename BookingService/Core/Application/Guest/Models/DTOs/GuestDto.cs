@@ -1,6 +1,6 @@
-﻿namespace Application.Guest.Models.DTOs;
+﻿namespace Application.Guest.Models.Dtos;    
 
-public sealed class GuestDto
+public sealed record GuestDto
 {
     public int Id { get; set; }
 

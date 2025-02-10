@@ -1,6 +1,6 @@
 ﻿using Domain.Entities.Base;
-using Domain.Enums;
-using Domain.ValueObjects;
+using Domain.Entities.Enums;
+using Domain.Entities.ValueObjects;
 
 namespace Domain.Entities;
 
@@ -15,4 +15,6 @@ public sealed class GuestEntity : EntityBase
     public GuestType Type { get; set; }
 
     public DocumentNumber Document { get; set; }
+
+    public ICollection<BookingGuestEntity> BookingGuests { get; set; } = new HashSet<BookingGuestEntity>();
 }

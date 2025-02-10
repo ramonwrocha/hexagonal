@@ -1,5 +1,5 @@
 ﻿using Domain.Entities.Base;
-using Domain.Enums;
+using Domain.Entities.Enums;
 
 namespace Domain.Entities;
 
@@ -11,9 +11,11 @@ public class BookingEntity : EntityBase
     
     public decimal TotalPrice { get; set; }
 
-    public required RoomEntity Room { get; set; }
+    public int RoomId { get; set; }
+
+    public RoomEntity Room { get; set; }
     
-    public ICollection<GuestEntity> Guests { get; set; } = [];
+    public ICollection<BookingGuestEntity> BookingGuests { get; set; } = new HashSet<BookingGuestEntity>();
 
     private BookingStatus Status { get; set; }
 

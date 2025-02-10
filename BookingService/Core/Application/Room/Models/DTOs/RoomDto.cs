@@ -1,8 +1,8 @@
-﻿using Domain.Enums;
+﻿using Domain.Entities.Enums;
 
-namespace Application.Room.Models.DTOs;
+namespace Application.Room.Models.Dtos;
 
-public class RoomDto
+public sealed record RoomDto
 {
     public int Id { get; set; }
 
