@@ -1,4 +1,5 @@
 ﻿using Application.Guest.Adapters;
+using Application.Guest.Models.Dtos;
 using Application.Guest.Models.Requests;
 using Domain.Entities;
 using Domain.Entities.Enums;

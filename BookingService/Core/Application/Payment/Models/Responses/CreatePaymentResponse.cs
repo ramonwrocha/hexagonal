@@ -3,6 +3,7 @@ using Application.Payment.Models.Dtos;
 
 namespace Application.Payment.Models.Responses;
 
-public class PaymentResponse : ResponseBase<PaymentDto>
+public class CreatePaymentResponse : ResponseBase<PaymentDto>
 {
+    public required string ClientToken { get; set; }
 }

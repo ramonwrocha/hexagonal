@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using FluentValidation;
 using Application.Booking.Adapters;
 using Application.Guest.Adapters;
-using Data.Persistence;
+using Data.Adapters;
 
 namespace Api.IoC;
 

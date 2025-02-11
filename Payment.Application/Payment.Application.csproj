@@ -7,8 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="PayPal\" />
+    <Folder Include="Adapters\PayPal\" />
     <Folder Include="Strip\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Braintree" Version="5.30.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BookingService\Core\Application\Application.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,5 +5,5 @@ namespace Application.Payment.Ports.Base;
 
 public interface IPaymentServiceBase
 {
-    Task<PaymentResponse> CreatePaymentAsync(CreatePaymentRequest request);
+    Task<CreatePaymentResponse> CreatePaymentAsync(CreatePaymentRequest request);
 }
