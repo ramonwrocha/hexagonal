@@ -10,7 +10,11 @@ using Microsoft.EntityFrameworkCore;
 using FluentValidation;
 using Application.Booking.Adapters;
 using Application.Guest.Adapters;
+using Application.Payment.Ports;
 using Data.Adapters;
+using Microsoft.Extensions.Options;
+using Payment.Application.Adapters;
+using Payment.Application.Adapters.PayPal;
 
 namespace Api.IoC;
 
@@ -22,8 +26,15 @@ public static class IoCConfig
         RegisterRepositories(serviceCollection);
         RegisterData(serviceCollection, configuration);
         RegisterValidators(serviceCollection);
-
+        RegisterExternalServices(serviceCollection);
+        
         return serviceCollection;
+    }
+
+    private static void RegisterExternalServices(IServiceCollection serviceCollection)
+    {
+        serviceCollection.AddScoped<IPaymentProcessorFactory, PaymentProcessorFactory>();
+        serviceCollection.AddOptions<IOptions<PayPalConfiguration>>();
     }
 
     private static void RegisterValidators(IServiceCollection serviceCollection)
@@ -53,5 +64,6 @@ public static class IoCConfig
         serviceCollection.AddScoped<IRoomService, RoomService>();
         serviceCollection.AddScoped<IGuestService, GuestService>();
         serviceCollection.AddScoped<IBookingService, BookingService>();
+        serviceCollection.AddScoped<IPaymentService, PayPalService>();
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Payment.Application;
+﻿namespace Payment.Application.Adapters.PayPal;
 
 public class PayPalConfiguration
 {

@@ -5,14 +5,13 @@ using Application.Payment.Ports;
 using Braintree;
 using Microsoft.Extensions.Options;
 
-namespace Payment.Application.Adapters;
+namespace Payment.Application.Adapters.PayPal;
 
-public class PayPalService : IPayPalService
+public class PayPalService : IPaymentService
 {
     private readonly PayPalConfiguration _options;
 
     private readonly IBraintreeGateway _gateway;
-
 
     public PayPalService(IOptions<PayPalConfiguration> options)
     {
